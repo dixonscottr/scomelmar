@@ -16,10 +16,11 @@ class RestaurantViewer
     Phone: #{report.phone}
     ----------------
     Cuisine: #{report.cuisine_description}
-    Date of Inspection: #{report.grade_date}
+    Date of Inspection: #{report.inspection_date}
     Violation Description: #{report.violation_description}
 
     ~~~END OF REPORT~~~
+
     REPORT
   end
 
