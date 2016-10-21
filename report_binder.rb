@@ -1,6 +1,6 @@
 class ReportBinder
 
-  attr_reader :reports
+  attr_accessor :reports
 
   def initialize(args = {})
     @reports = args.fetch(:reports, [])

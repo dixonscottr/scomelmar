@@ -1,24 +1,22 @@
-require_relative 'restaurant_report'
+require_relative 'config'
 require 'json'
-require 'open-uri'
 
 module ReportParser
 
-  NYC_DOH_URL = 'http://data.cityofnewyork.us/resource/43nn-pn8j.json'
-
-  def self.parse(filename, report_binder, klass)
+  def self.parse(filename, binder, klass)
     file = open(filename).read
     report_hash_array = JSON.parse(file)
     report_hash_array.each do |report|
-      report_binder.reports << klass.new(report)
+      binder.reports << RestaurantReport.new(restaurant)
     end
   end
 end
 
 #----Driver-------
-
-ReportParser.parse(ReportParser::NYC_DOH_URL)
-# url = "https://data.cityofnewyork.us/resource/43nn-pn8j.json"
+klass = RestaurantReport
+binder = ReportBinder.new
+url = "http://data.cityofnewyork.us/resource/43nn-pn8j.json?zipcode=11211"
+ReportParser.parse(url, binder, klass)
 # zip_query = "zipcode="
 
 # puts "what is the zipcode you want to search for?"
