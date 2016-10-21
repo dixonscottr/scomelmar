@@ -1,7 +1,7 @@
 class RestaurantReport
     attr_reader :cuisine_description, :dba, :boro, :grade_date, :grade
     attr_reader :violation_description, :building, :zipcode, :phone
-
+    
   def initialize(args = {})
     @cuisine_description = args.fetch(:cuisine_description, "")
     @dba = args.fetch(:dba, "")
