@@ -1,7 +1,7 @@
 class RestaurantReport
     attr_reader :cuisine_description, :dba, :boro, :grade_date, :grade
     attr_reader :violation_description, :building, :zipcode, :phone
-    
+
   def initialize(args = {})
     @cuisine_description = args.fetch(:cuisine_description, "")
     @dba = args.fetch(:dba, "")
@@ -23,19 +23,17 @@ class RestaurantReport
     @inspection_type = args.fetch(:inspection_type, "")
   end
 
-
-  def report_viewer
-    #heredoc here?
-    #critical flag?
-  end
-
   def make_pretty_word(ugly_word)
-    #turn all caps to capitalizing words
-    # use regex to find every letter after a space and capitalize
+    ugly_word.split.map {|word| word.capitalize}.join(' ')
   end
 
-  def insert_hyphens(number)
-    # formats phone number regex :)
+  def format_phone_number(phone)
+    if phone.match(/\d{10}/)
+      area_code = phone.slice(0..2)
+      middle_nums = phone.slice(3..5)
+      end_nums = phone.slice(6..9)
+      [area_code, middle_nums, end_nums].join('-')
+    end
   end
 
 end
