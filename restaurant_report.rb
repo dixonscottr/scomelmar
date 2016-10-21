@@ -1,5 +1,5 @@
 class RestaurantReport
-    attr_reader :cuisine_description, :dba, :boro, :grade_date, :grade, :street
+    attr_reader :cuisine_description, :dba, :boro, :grade_date, :grade, :street, :inspection_date
     attr_reader :violation_description, :building, :zipcode, :phone, :critical_flag
 
   def initialize(args = {})
