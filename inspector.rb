@@ -13,17 +13,15 @@ class Inspector
   end
 
   def run
-    binder = binder_class.new
     if ARGV[0].downcase == 'zipcode'
       zipcode = ARGV[1]
       search_url = url + "?" + "zipcode=" + zipcode
-      parser.parse(search_url, binder, report_class)
+      restaurant_reports = parser.parse(search_url, report_class)
+      binder = binder_class.new(:reports => restaurant_reports)
       binder.reports.each do |report|
-        p report
         viewer.display_report(report)
       end
     end
-    # binder.reports.each {|shop| puts shop.dba}
   end
 
 end

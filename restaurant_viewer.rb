@@ -6,7 +6,7 @@ class RestaurantViewer
     report.critical_flag == "Critical" ? c_flag = " ☠️ " : c_flag = " 👍 "
 
     puts <<-REPORT
-    INCIDENT REPORT #{c_flag}:
+    INCIDENT REPORT#{c_flag}:
 
     #{report.dba}
     ================
